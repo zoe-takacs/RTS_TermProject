@@ -1,0 +1,2 @@
+../Core/Src/motor_tasks.c:5:6:vert_motor_controller_task	24	static
+../Core/Src/motor_tasks.c:39:6:rot_motor_controller_task	24	static

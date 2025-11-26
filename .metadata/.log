@@ -1,0 +1,36 @@
+!SESSION 2025-11-26 09:57:21.926 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-11-26 09:58:50.714
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-11-26 09:58:50.715
+!MESSAGE Log4j2 initialized with config file C:\Users\marc\OneDrive - Dalhousie University\4th year\Second Semester\Real Time Systems\RTS_TermProject\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-11-26 09:58:58.055
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-11-26 10:00:43.019
+!MESSAGE Indexed 'RTS_CRANE_PROJECT' (37 sources, 153 headers) in 2.33 sec: 16,380 declarations; 77,025 references; 1 unresolved inclusions; 202 syntax errors; 241 unresolved names (0.26%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-11-26 10:16:04.742
+!MESSAGE Indexed 'RTS_CRANE_PROJECT' (37 sources, 113 headers) in 1.8 sec: 9,178 declarations; 53,559 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0032%)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2025-11-26 10:36:39.843
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2025-11-26 10:40:06.782
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-11-26 10:42:14.566
+!MESSAGE Indexed 'RTS_CRANE_PROJECT' (37 sources, 114 headers) in 0.824 sec: 9,202 declarations; 53,550 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0032%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-11-26 10:42:21.029
+!MESSAGE Indexed 'RTS_CRANE_PROJECT' (37 sources, 114 headers) in 0.734 sec: 9,202 declarations; 53,550 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0032%)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2025-11-26 10:42:50.692
+!MESSAGE Won't launch debug session since we failed to locate the binary.

@@ -1,0 +1,10 @@
+10:46:50 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27072	     96	  21176	  48344	   bcd8	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+
+10:46:50 Build Finished. 0 errors, 0 warnings. (took 293ms)
+

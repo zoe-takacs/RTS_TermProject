@@ -1,0 +1,4 @@
+../Core/Src/crane_io.c:3:9:Read_Vert_Button	1
+../Core/Src/crane_io.c:8:9:Read_Rot_Button	1
+../Core/Src/crane_io.c:13:9:Read_Vert_Switch	1
+../Core/Src/crane_io.c:18:9:Read_Rot_Switch	1

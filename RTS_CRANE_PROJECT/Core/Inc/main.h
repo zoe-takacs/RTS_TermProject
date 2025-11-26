@@ -80,14 +80,14 @@ void Error_Handler(void);
 #define PWM_motor1_GPIO_Port GPIOA
 #define PWM_motor2_Pin GPIO_PIN_9
 #define PWM_motor2_GPIO_Port GPIOA
-#define TMS_Pin GPIO_PIN_13
-#define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14
 #define TCK_GPIO_Port GPIOA
-#define us_echo_Pin GPIO_PIN_15
-#define us_echo_GPIO_Port GPIOA
+#define US_echo_Pin GPIO_PIN_15
+#define US_echo_GPIO_Port GPIOA
 #define SWO_Pin GPIO_PIN_3
 #define SWO_GPIO_Port GPIOB
+#define us_trigB6_Pin GPIO_PIN_6
+#define us_trigB6_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
