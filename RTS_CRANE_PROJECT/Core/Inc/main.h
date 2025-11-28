@@ -57,40 +57,46 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define mode_btn_Pin GPIO_PIN_13
-#define mode_btn_GPIO_Port GPIOC
-#define mode_btn_EXTI_IRQn EXTI15_10_IRQn
-#define vert_btn_Pin GPIO_PIN_0
-#define vert_btn_GPIO_Port GPIOA
 #define vert_sw_Pin GPIO_PIN_1
 #define vert_sw_GPIO_Port GPIOA
 #define USART_TX_Pin GPIO_PIN_2
 #define USART_TX_GPIO_Port GPIOA
 #define USART_RX_Pin GPIO_PIN_3
 #define USART_RX_GPIO_Port GPIOA
-#define rot_btn_Pin GPIO_PIN_4
-#define rot_btn_GPIO_Port GPIOA
+#define rot_sw_Pin GPIO_PIN_4
+#define rot_sw_GPIO_Port GPIOA
 #define LED_GREEN_Pin GPIO_PIN_5
 #define LED_GREEN_GPIO_Port GPIOA
-#define rot_sw_Pin GPIO_PIN_0
-#define rot_sw_GPIO_Port GPIOB
+#define auto_btn_Pin GPIO_PIN_4
+#define auto_btn_GPIO_Port GPIOC
 #define us_trig_Pin GPIO_PIN_6
 #define us_trig_GPIO_Port GPIOC
 #define PWM_motor1_Pin GPIO_PIN_8
 #define PWM_motor1_GPIO_Port GPIOA
 #define PWM_motor2_Pin GPIO_PIN_9
 #define PWM_motor2_GPIO_Port GPIOA
+#define vert_btn_Pin GPIO_PIN_12
+#define vert_btn_GPIO_Port GPIOA
+#define vert_btn_EXTI_IRQn EXTI15_10_IRQn
 #define TCK_Pin GPIO_PIN_14
 #define TCK_GPIO_Port GPIOA
-#define US_echo_Pin GPIO_PIN_15
-#define US_echo_GPIO_Port GPIOA
+#define us_echo_Pin GPIO_PIN_15
+#define us_echo_GPIO_Port GPIOA
+#define rot_btn_Pin GPIO_PIN_10
+#define rot_btn_GPIO_Port GPIOC
+#define rot_btn_EXTI_IRQn EXTI15_10_IRQn
+#define mode_btn_Pin GPIO_PIN_11
+#define mode_btn_GPIO_Port GPIOC
+#define mode_btn_EXTI_IRQn EXTI15_10_IRQn
 #define SWO_Pin GPIO_PIN_3
 #define SWO_GPIO_Port GPIOB
-#define us_trigB6_Pin GPIO_PIN_6
-#define us_trigB6_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
-
+enum {
+	MANUAL,
+	AUTO,
+	CALIBRATION
+};
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

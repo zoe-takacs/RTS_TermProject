@@ -1,0 +1,41 @@
+#include "crane.h"
+
+void HCSR04_Init(void)
+{
+	HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_1);
+}
+
+void delay_us(uint32_t us)
+{
+    __HAL_TIM_SET_COUNTER(&htim2, 0);
+    while (__HAL_TIM_GET_COUNTER(&htim2) < us);
+}
+
+float measure_distance_cm(void)
+{
+    capturing = 0;
+
+    // Start with rising edge mode (CubeMX should configure it this way)
+    __HAL_TIM_SET_COUNTER(&htim2, 0);
+
+    HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_1);
+
+    trigger_pulse();
+
+    uint32_t timeout = HAL_GetTick() + 50;
+    while (capturing < 2)
+    {
+        if (HAL_GetTick() > timeout)
+            return -1;     // sensor failed
+    }
+
+    uint32_t pulse_width_us = echo_falling - echo_rising;
+
+    return pulse_width_us * 0.0343f / 2.0f;
+}
+
+float HCSR04_ReadDistanceCm(void)
+{
+	float d = measure_distance_cm();
+	return d;
+}

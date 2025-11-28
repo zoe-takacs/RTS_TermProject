@@ -18,8 +18,16 @@ extern UART_HandleTypeDef huart2;
 #define ROT_PWM_STEP_US      8u
 
 // ===== Distance Limits (experimental, tuning needed) =====
-#define VERT_DIST_MIN_CM     5.0f
+#define VERT_DIST_MIN_CM     2.0f
 #define VERT_DIST_MAX_CM     25.0f
+
+enum{
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT,
+	STOP
+};
 
 #define DIR_UP               1
 #define DIR_DOWN             0
@@ -27,6 +35,7 @@ extern UART_HandleTypeDef huart2;
 #define DIR_LEFT             0
 
 // GPIO mapping (from your CubeMX pins)
+// NOT USED!!!
 #define VERT_BTN_GPIO_Port   GPIOA
 #define VERT_BTN_Pin         GPIO_PIN_0
 
@@ -64,5 +73,10 @@ uint8_t Read_Rot_Switch(void);
 // Tasks
 void vert_motor_controller_task(void *argument);
 void rot_motor_controller_task(void *argument);
+void auto_motor_controller_task(void *argument);
+
+// Communication helpers
+void send_usart(char *msg);
+void usart_task(void *arg);
 
 #endif

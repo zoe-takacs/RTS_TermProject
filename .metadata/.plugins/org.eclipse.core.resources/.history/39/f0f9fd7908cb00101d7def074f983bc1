@@ -1,0 +1,102 @@
+#include "crane.h"
+#include "FreeRTOS.h"
+#include "task.h"
+
+extern TaskHandle_t vert_motor_controller_handle;
+extern TaskHandle_t  rot_motor_controller_handle;
+
+void vert_motor_controller_task(void *argument)
+{
+	// === 1) Initialize the vertical servo ===
+    uint16_t pwm = 1500;
+    VertServo_Init();
+    HCSR04_Init();
+    char msg = "Vertical Motor Controller Task Initialized!";
+    send_usart(msg);
+    vTaskSuspend(vert_motor_controller_handle);
+
+    for (;;)
+    {
+    	// === 2) Check if vertical button is still pressed ===
+        if (!Read_Vert_Button())
+        {
+        	// === If not pressed, then suspend task ===
+        	char msg_suspend = "Vertical Motor Controller Task suspended!";
+        	send_usart(msg_suspend);
+            vTaskSuspend(vert_motor_controller_handle);
+            char msg_unsuspend = "Vertical Motor Controller Task UNsuspended!";
+            send_usart(msg_unsuspend);
+            continue;
+        }
+
+        // === 3) If button is pressed, then check the direction to go and current height ===
+        uint8_t dir = Read_Vert_Switch();
+        float dist = HCSR04_ReadDistanceCm();
+
+        // === 4) If distance measurement failed, or displacement is maxed out skip===
+        if ((dist == -1) || (dist >= VERT_DIST_MAX_CM && dir == DIR_UP) ||
+            (dist <= VERT_DIST_MIN_CM && dir == DIR_DOWN))
+        {
+            vTaskDelay(pdMS_TO_TICKS(20));
+            continue;
+        }
+
+        // === 5) Check direction, and adjust pwm accordingly ===
+        if (dir == DIR_UP){
+            pwm += VERT_PWM_STEP_US;
+        }
+        else {
+            pwm -= VERT_PWM_STEP_US;
+        }
+
+        char msg_pwm[25];
+        snprintf(msg_pwm, sizeof(msg_pwm), "Vertical PWM: %u\r\n", pwm);
+        send_usart(msg_pwm);
+
+        VertServo_SetPulseUs(pwm);
+
+        // === 6) Wait before sampling again ===
+        vTaskDelay(pdMS_TO_TICKS(20));
+    }
+}
+
+void rot_motor_controller_task(void *argument)
+{
+	// === 1) Initialize the rotating servo ===
+    uint16_t pwm = 1500;
+    RotServo_Init();
+    char msg = "Rotational Motor Controller Task initialized!";
+    send_usart(msg);
+    vTaskSuspend(rot_motor_controller_handle);
+
+    for (;;)
+    {
+    	// === 2) Check if rotational button is still pressed ===
+        if (!Read_Rot_Button())
+        {
+        	char msg_suspend = "Rotational Motor Controller Task suspended!";
+        	send_usart(msg_suspend);
+            vTaskSuspend(rot_motor_controller_handle);
+            char msg_unsuspend = "Rotational Motor Controller Task UNsuspended!";
+            send_usart(msg_unsuspend);
+            continue;
+        }
+
+        // === 3) If button is pressed, then check the direction to go ===
+        uint8_t dir = Read_Rot_Switch();
+
+        // === 4) Check direction, and adjust pwm accordingly ===
+        if (dir == DIR_RIGHT)
+            pwm += ROT_PWM_STEP_US;
+        else
+            pwm -= ROT_PWM_STEP_US;
+
+        char msg_pwm[25];
+		snprintf(msg_pwm, sizeof(msg_pwm), "Rotational PWM: %u\r\n", pwm);
+		send_usart(msg_pwm);
+        RotServo_SetPulseUs(pwm);
+
+        // === 5) Wait before sampling again ===
+        vTaskDelay(pdMS_TO_TICKS(20));
+    }
+}

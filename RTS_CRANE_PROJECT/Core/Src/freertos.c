@@ -26,6 +26,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "crane.h"
+#include "queue.h"
+
 
 /* USER CODE END Includes */
 
@@ -46,7 +48,12 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
+TaskHandle_t  vert_motor_controller_handle;
+TaskHandle_t  rot_motor_controller_handle;
+TaskHandle_t  auto_motor_controller_handle;
+TaskHandle_t usart_handle;
 
+QueueHandle_t usartQueue;
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
@@ -89,6 +96,7 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
+	usartQueue = xQueueCreate(10, sizeof(char[50]));
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
@@ -99,18 +107,31 @@ void MX_FREERTOS_Init(void) {
   /* add threads, ... */
   xTaskCreate(vert_motor_controller_task,
               "VertMotor",
-              256,
+              500,
               NULL,
               osPriorityNormal,
-              NULL);
+              &vert_motor_controller_handle);
 
   xTaskCreate(rot_motor_controller_task,
               "RotMotor",
-              256,
+              500,
               NULL,
               osPriorityNormal,
-              NULL);
+              &rot_motor_controller_handle);
 
+  xTaskCreate(auto_motor_controller_task,
+                "AutoTask",
+                500,
+                NULL,
+                osPriorityNormal,
+                &auto_motor_controller_handle);
+
+  xTaskCreate(usart_task,
+                "USARTTASK",
+                256,
+                NULL,
+                osPriorityNormal,
+                &usart_handle);
 
   /* USER CODE END RTOS_THREADS */
 

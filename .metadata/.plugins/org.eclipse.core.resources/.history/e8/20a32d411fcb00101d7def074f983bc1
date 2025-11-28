@@ -1,0 +1,205 @@
+#include "crane.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include <stdio.h>
+#include "queue.h"
+
+extern TaskHandle_t vert_motor_controller_handle;
+extern TaskHandle_t  rot_motor_controller_handle;
+
+extern QueueHandle_t usartQueue;
+
+void add_msg_to_queue(int instruction){
+	char msg[25];
+
+	switch(instruction){
+		case(UP):
+				snprintf(msg, sizeof(msg), "Moving UP\r\n");
+			break;
+		case(DOWN):
+				snprintf(msg, sizeof(msg), "Moving DOWN\r\n");
+			break;
+		case(LEFT):
+				snprintf(msg, sizeof(msg), "Moving LEFT\r\n");
+			break;
+		case(RIGHT):
+				snprintf(msg, sizeof(msg), "Moving RIGHT\r\n");
+			break;
+		case(STOP):
+				snprintf(msg, sizeof(msg), "Motor STOPPED\r\n");
+			break;
+		default:
+			snprintf(msg, sizeof(msg), "Moving in UNKNOWN DIRECTION!!\r\n");
+			break;
+	}
+	xQueueSend(usartQueue, &msg, 0);
+}
+
+void rot_motor_right(void){
+	RotServo_SetPulseUs(1450);
+	add_msg_to_queue(RIGHT);
+}
+
+void rot_motor_left(void){
+	RotServo_SetPulseUs(1550);
+	add_msg_to_queue(LEFT);
+}
+
+void vert_motor_up(void){
+	VertServo_SetPulseUs(1450);
+	add_msg_to_queue(UP);
+}
+
+void vert_motor_down(void){
+	VertServo_SetPulseUs(1550);
+	add_msg_to_queue(DOWN);
+}
+
+void vert_motor_stop(void){
+	VertServo_SetPulseUs(1500);
+	add_msg_to_queue(STOP);
+}
+
+void rot_motor_stop(void){
+	RotServo_SetPulseUs(1500);
+	add_msg_to_queue(STOP);
+}
+
+void vert_motor_controller_task(void *argument)
+{
+	// === 1) Initialize the vertical servo ===
+    uint16_t pwm = 1500;
+    VertServo_Init();
+    HCSR04_Init();
+    char msg[] = "Vertical Motor Controller Task Initialized!\r\n";
+    xQueueSend(usartQueue, &msg, 0);
+    vTaskSuspend(NULL);
+
+    for (;;)
+    {
+    	// === 2) Check if vertical button is still pressed ===
+        if (!Read_Vert_Button())
+        {
+        	// === If not pressed, then suspend task ===
+        	char msg_suspend[] = "Vertical Motor Controller Task suspended!\r\n";
+        	xQueueSend(usartQueue, &msg_suspend, 0);
+        	vert_motor_stop();
+            vTaskSuspend(NULL);
+            char msg_unsuspend[] = "Vertical Motor Controller Task UNsuspended!\r\n";
+            xQueueSend(usartQueue, &msg_unsuspend, 0);
+            continue;
+        }
+
+        // === 3) If button is pressed, then check the direction to go and current height ===
+        uint8_t dir = Read_Vert_Switch();
+        float dist = HCSR04_ReadDistanceCm();
+
+        // === 4) If distance measurement failed, or displacement is maxed out skip===
+        if ((dist == -1) || (dist >= VERT_DIST_MAX_CM && dir == DIR_UP) ||
+            (dist <= VERT_DIST_MIN_CM && dir == DIR_DOWN))
+        {
+            vTaskDelay(pdMS_TO_TICKS(20));
+            continue;
+        }
+
+        // === 5) Check direction, and adjust pwm accordingly ===
+        if (dir == DIR_UP){
+        	vert_motor_up();
+        }
+        else {
+        	vert_motor_down();
+        }
+
+        // === 6) Wait before sampling again ===
+        vTaskDelay(pdMS_TO_TICKS(20));
+    }
+}
+
+void rot_motor_controller_task(void *argument)
+{
+	// === 1) Initialize the rotating servo ===
+    uint16_t pwm = 1500;
+    RotServo_Init();
+    char msg[] = "Rotational Motor Controller Task initialized!\r\n";
+    xQueueSend(usartQueue, &msg, 0);
+    vTaskSuspend(NULL);
+
+    for (;;)
+    {
+    	// === 2) Check if rotational button is still pressed ===
+        if (!Read_Rot_Button())
+        {
+        	char msg_suspend[] = "Rotational Motor Controller Task suspended!\r\n";
+        	xQueueSend(usartQueue, &msg_suspend, 0);
+        	rot_motor_stop();
+        	vTaskSuspend(NULL);
+            char msg_unsuspend[] = "Rotational Motor Controller Task UNsuspended!\r\n";
+            xQueueSend(usartQueue, &msg_unsuspend, 0);
+            continue;
+        }
+
+        // === 3) If button is pressed, then check the direction to go ===
+        uint8_t dir = Read_Rot_Switch();
+
+        // === 4) Check direction, and adjust pwm accordingly ===
+        if (dir == DIR_RIGHT){
+        	rot_motor_right();
+        }
+        else{
+        	rot_motor_left();
+        }
+
+        // === 5) Wait before sampling again ===
+        vTaskDelay(pdMS_TO_TICKS(20));
+    }
+}
+
+void auto_motor_controller_task(void *argument){
+
+	vTaskSuspend(NULL);
+
+	for(;;)
+	{
+		/* === 1) Assume starting position (nothing to do) === */
+		// If you need to home or reset, add it here
+
+		/* === 2) Rotate rot motor RIGHT for 1 second === */
+		rot_motor_right();
+		vTaskDelay(pdMS_TO_TICKS(1000));
+		rot_motor_stop();
+
+		/* === 3) Rotate vert motor UP for 0.5 seconds === */
+		vert_motor_up();
+		vTaskDelay(pdMS_TO_TICKS(500));
+		vert_motor_stop();
+
+		/* === 4) Rotate rot motor LEFT for 1 second === */
+		rot_motor_left();
+		vTaskDelay(pdMS_TO_TICKS(1000));
+		rot_motor_stop();
+
+		/* === 5) Rotate vert motor UP for 4 seconds === */
+		vert_motor_up();
+		vTaskDelay(pdMS_TO_TICKS(4000));
+		vert_motor_stop();
+
+		/* === 6) Rotate rot motor LEFT for 1 second === */
+		rot_motor_left();
+		vTaskDelay(pdMS_TO_TICKS(1000));
+		rot_motor_stop();
+
+		/* === 7) Rotate vert motor DOWN for 0.2 seconds === */
+		vert_motor_down();
+		vTaskDelay(pdMS_TO_TICKS(200));
+		vert_motor_stop();
+
+		/* === 8) Rotate rot motor RIGHT for 1 second === */
+		rot_motor_right();
+		vTaskDelay(pdMS_TO_TICKS(1000));
+		rot_motor_stop();
+
+		/* === Finished sequence === */
+		vTaskSuspend(NULL);
+	}
+
+}

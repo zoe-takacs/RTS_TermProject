@@ -209,4 +209,5 @@
 			<resource resourceType="PROJECT" workspacePath="/RTS_CRANE_PROJECT"/>
 		</configuration>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 </cproject>

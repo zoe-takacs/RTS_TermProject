@@ -1,0 +1,2 @@
+../Core/Src/comm_io.c:17:6:send_usart	16	static
+../Core/Src/comm_io.c:22:6:usart_task	72	static

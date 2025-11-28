@@ -1,0 +1,72 @@
+#ifndef CRANE_H
+#define CRANE_H
+
+#include "stm32f4xx_hal.h"
+#include "cmsis_os.h"   // FreeRTOS
+
+extern TIM_HandleTypeDef htim1;
+extern TIM_HandleTypeDef htim2;
+extern UART_HandleTypeDef huart2;
+
+// ===== Servo config =====
+#define VERT_PWM_MIN_US      1000u
+#define VERT_PWM_MAX_US      2000u
+#define VERT_PWM_STEP_US     8u
+
+#define ROT_PWM_MIN_US       1000u
+#define ROT_PWM_MAX_US       2000u
+#define ROT_PWM_STEP_US      8u
+
+// ===== Distance Limits (experimental, tuning needed) =====
+#define VERT_DIST_MIN_CM     5.0f
+#define VERT_DIST_MAX_CM     25.0f
+
+#define DIR_UP               1
+#define DIR_DOWN             0
+#define DIR_RIGHT            1
+#define DIR_LEFT             0
+
+// GPIO mapping (from your CubeMX pins)
+#define VERT_BTN_GPIO_Port   GPIOA
+#define VERT_BTN_Pin         GPIO_PIN_0
+
+#define VERT_SW_GPIO_Port    GPIOA
+#define VERT_SW_Pin          GPIO_PIN_1
+
+#define ROT_SW_GPIO_Port     GPIOB
+#define ROT_SW_Pin           GPIO_PIN_0
+
+#define ROT_BTN_GPIO_Port    GPIOC
+#define ROT_BTN_Pin          GPIO_PIN_13
+
+#define HCSR04_TRIG_GPIO_Port  GPIOC
+#define HCSR04_TRIG_Pin        GPIO_PIN_6
+
+#define HCSR04_ECHO_GPIO_Port  GPIOA
+#define HCSR04_ECHO_Pin        GPIO_PIN_15
+
+// Servo API
+void VertServo_Init(void);
+void RotServo_Init(void);
+void VertServo_SetPulseUs(uint16_t us);
+void RotServo_SetPulseUs(uint16_t us);
+
+// Ultrasonic API
+void HCSR04_Init(void);
+float HCSR04_ReadDistanceCm(void);
+
+// IO helpers
+uint8_t Read_Vert_Button(void);
+uint8_t Read_Vert_Switch(void);
+uint8_t Read_Rot_Button(void);
+uint8_t Read_Rot_Switch(void);
+
+// Tasks
+void vert_motor_controller_task(void *argument);
+void rot_motor_controller_task(void *argument);
+
+// Communication helpers
+void send_usart(char *msg);
+oid usart_task(void *arg);
+
+#endif
