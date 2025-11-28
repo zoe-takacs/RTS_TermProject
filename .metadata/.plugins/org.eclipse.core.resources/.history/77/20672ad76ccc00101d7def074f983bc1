@@ -26,7 +26,7 @@ int mode = MANUAL;
 char msg[50];
 
 void change_mode(void){
-	mode = (mode + 1) % 3;
+	mode++;
 	switch(mode){
 		case(MANUAL):
 		snprintf(msg, sizeof(msg), "Mode = MANUAL\r\n");

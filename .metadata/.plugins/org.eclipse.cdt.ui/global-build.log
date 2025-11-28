@@ -1124,3 +1124,256 @@ Finished building: default.size.stdout
  
 Finished building: RTS_CRANE_PROJECT.list
  
+11:06:41 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+   text	   data	    bss	    dec	    hex	filename
+  33516	     96	  21200	  54812	   d61c	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+11:07:02 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+   text	   data	    bss	    dec	    hex	filename
+  33516	     96	  21200	  54812	   d61c	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+11:07:25 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+   text	   data	    bss	    dec	    hex	filename
+  33516	     96	  21200	  54812	   d61c	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+11:07:59 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+   text	   data	    bss	    dec	    hex	filename
+  33516	     96	  21200	  54812	   d61c	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+11:08:32 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+   text	   data	    bss	    dec	    hex	filename
+  33516	     96	  21200	  54812	   d61c	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+11:12:03 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/gpio.d" -MT"Core/Src/gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/gpio.o"
+arm-none-eabi-gcc -o "RTS_CRANE_PROJECT.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\go\Documents\STM32\STM32Workspaces\RTS_TermProject\RTS_CRANE_PROJECT\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RTS_CRANE_PROJECT.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RTS_CRANE_PROJECT.elf
+ 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+arm-none-eabi-objdump -h -S RTS_CRANE_PROJECT.elf  > "RTS_CRANE_PROJECT.list"
+   text	   data	    bss	    dec	    hex	filename
+  33484	     96	  21200	  54780	   d5fc	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+Finished building: RTS_CRANE_PROJECT.list
+ 
+11:13:53 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/interrupt_handlers.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/interrupt_handlers.d" -MT"Core/Src/interrupt_handlers.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/interrupt_handlers.o"
+../Core/Src/interrupt_handlers.c: In function 'change_mode':
+../Core/Src/interrupt_handlers.c:29:14: warning: operation on 'mode' may be undefined [-Wsequence-point]
+   29 |         mode = (mode++) % 3;
+      |         ~~~~~^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "RTS_CRANE_PROJECT.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\go\Documents\STM32\STM32Workspaces\RTS_TermProject\RTS_CRANE_PROJECT\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RTS_CRANE_PROJECT.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RTS_CRANE_PROJECT.elf
+ 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+arm-none-eabi-objdump -h -S RTS_CRANE_PROJECT.elf  > "RTS_CRANE_PROJECT.list"
+   text	   data	    bss	    dec	    hex	filename
+  33516	     96	  21200	  54812	   d61c	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+Finished building: RTS_CRANE_PROJECT.list
+ 
+11:14:45 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/interrupt_handlers.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/interrupt_handlers.d" -MT"Core/Src/interrupt_handlers.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/interrupt_handlers.o"
+arm-none-eabi-gcc -o "RTS_CRANE_PROJECT.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\go\Documents\STM32\STM32Workspaces\RTS_TermProject\RTS_CRANE_PROJECT\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RTS_CRANE_PROJECT.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RTS_CRANE_PROJECT.elf
+ 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+arm-none-eabi-objdump -h -S RTS_CRANE_PROJECT.elf  > "RTS_CRANE_PROJECT.list"
+   text	   data	    bss	    dec	    hex	filename
+  33516	     96	  21200	  54812	   d61c	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+Finished building: RTS_CRANE_PROJECT.list
+ 
+11:14:51 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+   text	   data	    bss	    dec	    hex	filename
+  33516	     96	  21200	  54812	   d61c	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+11:27:25 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+   text	   data	    bss	    dec	    hex	filename
+  33516	     96	  21200	  54812	   d61c	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+11:27:51 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+   text	   data	    bss	    dec	    hex	filename
+  33516	     96	  21200	  54812	   d61c	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+11:30:12 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/comm_io.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/comm_io.d" -MT"Core/Src/comm_io.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/comm_io.o"
+arm-none-eabi-gcc "../Core/Src/crane_io.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/crane_io.d" -MT"Core/Src/crane_io.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/crane_io.o"
+arm-none-eabi-gcc "../Core/Src/freertos.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/freertos.d" -MT"Core/Src/freertos.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/freertos.o"
+arm-none-eabi-gcc "../Core/Src/gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/gpio.d" -MT"Core/Src/gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/gpio.o"
+arm-none-eabi-gcc "../Core/Src/interrupt_handlers.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/interrupt_handlers.d" -MT"Core/Src/interrupt_handlers.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/interrupt_handlers.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_hal_msp.d" -MT"Core/Src/stm32f4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_it.d" -MT"Core/Src/stm32f4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_it.o"
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/tim.o"
+arm-none-eabi-gcc "../Core/Src/usart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/usart.d" -MT"Core/Src/usart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/usart.o"
+arm-none-eabi-gcc -o "RTS_CRANE_PROJECT.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\go\Documents\STM32\STM32Workspaces\RTS_TermProject\RTS_CRANE_PROJECT\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RTS_CRANE_PROJECT.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RTS_CRANE_PROJECT.elf
+ 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+arm-none-eabi-objdump -h -S RTS_CRANE_PROJECT.elf  > "RTS_CRANE_PROJECT.list"
+   text	   data	    bss	    dec	    hex	filename
+  33500	     96	  21200	  54796	   d60c	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+Finished building: RTS_CRANE_PROJECT.list
+ 
+11:45:04 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/motor_tasks.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/motor_tasks.d" -MT"Core/Src/motor_tasks.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/motor_tasks.o"
+arm-none-eabi-gcc -o "RTS_CRANE_PROJECT.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\go\Documents\STM32\STM32Workspaces\RTS_TermProject\RTS_CRANE_PROJECT\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RTS_CRANE_PROJECT.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RTS_CRANE_PROJECT.elf
+ 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+arm-none-eabi-objdump -h -S RTS_CRANE_PROJECT.elf  > "RTS_CRANE_PROJECT.list"
+   text	   data	    bss	    dec	    hex	filename
+  33500	     96	  21200	  54796	   d60c	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+Finished building: RTS_CRANE_PROJECT.list
+ 
+11:45:20 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+   text	   data	    bss	    dec	    hex	filename
+  33500	     96	  21200	  54796	   d60c	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+11:46:55 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -x assembler-with-cpp -MMD -MP -MF"Core/Startup/startup_stm32f411retx.d" -MT"Core/Startup/startup_stm32f411retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Startup/startup_stm32f411retx.o" "../Core/Startup/startup_stm32f411retx.s"
+arm-none-eabi-gcc "../Core/Src/motor_tasks.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/motor_tasks.d" -MT"Core/Src/motor_tasks.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/motor_tasks.o"
+../Core/Startup/startup_stm32f411retx.s: Assembler messages:
+../Core/Startup/startup_stm32f411retx.s:61: Error: junk at end of line, first unrecognized character is `0'
+make: *** [Core/Startup/subdir.mk:19: Core/Startup/startup_stm32f411retx.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j20 all" terminated with exit code 2. Build might be incomplete.
+11:47:05 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -x assembler-with-cpp -MMD -MP -MF"Core/Startup/startup_stm32f411retx.d" -MT"Core/Startup/startup_stm32f411retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Startup/startup_stm32f411retx.o" "../Core/Startup/startup_stm32f411retx.s"
+../Core/Startup/startup_stm32f411retx.s: Assembler messages:
+../Core/Startup/startup_stm32f411retx.s:61: Error: junk at end of line, first unrecognized character is `0'
+make: *** [Core/Startup/subdir.mk:19: Core/Startup/startup_stm32f411retx.o] Error 1
+"make -j20 all" terminated with exit code 2. Build might be incomplete.
+11:47:14 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -x assembler-with-cpp -MMD -MP -MF"Core/Startup/startup_stm32f411retx.d" -MT"Core/Startup/startup_stm32f411retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Startup/startup_stm32f411retx.o" "../Core/Startup/startup_stm32f411retx.s"
+arm-none-eabi-gcc -o "RTS_CRANE_PROJECT.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\go\Documents\STM32\STM32Workspaces\RTS_TermProject\RTS_CRANE_PROJECT\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RTS_CRANE_PROJECT.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RTS_CRANE_PROJECT.elf
+ 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+arm-none-eabi-objdump -h -S RTS_CRANE_PROJECT.elf  > "RTS_CRANE_PROJECT.list"
+   text	   data	    bss	    dec	    hex	filename
+  33468	     96	  21200	  54764	   d5ec	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+Finished building: RTS_CRANE_PROJECT.list
+ 
+11:47:19 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+   text	   data	    bss	    dec	    hex	filename
+  33468	     96	  21200	  54764	   d5ec	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+11:49:03 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/motor_tasks.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/motor_tasks.d" -MT"Core/Src/motor_tasks.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/motor_tasks.o"
+arm-none-eabi-gcc -o "RTS_CRANE_PROJECT.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\go\Documents\STM32\STM32Workspaces\RTS_TermProject\RTS_CRANE_PROJECT\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RTS_CRANE_PROJECT.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RTS_CRANE_PROJECT.elf
+ 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+arm-none-eabi-objdump -h -S RTS_CRANE_PROJECT.elf  > "RTS_CRANE_PROJECT.list"
+   text	   data	    bss	    dec	    hex	filename
+  33468	     96	  21200	  54764	   d5ec	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+Finished building: RTS_CRANE_PROJECT.list
+ 
+11:50:34 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/motor_tasks.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/motor_tasks.d" -MT"Core/Src/motor_tasks.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/motor_tasks.o"
+arm-none-eabi-gcc -o "RTS_CRANE_PROJECT.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\go\Documents\STM32\STM32Workspaces\RTS_TermProject\RTS_CRANE_PROJECT\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RTS_CRANE_PROJECT.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RTS_CRANE_PROJECT.elf
+ 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+arm-none-eabi-objdump -h -S RTS_CRANE_PROJECT.elf  > "RTS_CRANE_PROJECT.list"
+   text	   data	    bss	    dec	    hex	filename
+  33468	     96	  21200	  54764	   d5ec	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+Finished building: RTS_CRANE_PROJECT.list
+ 
+11:52:08 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/motor_tasks.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/motor_tasks.d" -MT"Core/Src/motor_tasks.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/motor_tasks.o"
+arm-none-eabi-gcc -o "RTS_CRANE_PROJECT.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\go\Documents\STM32\STM32Workspaces\RTS_TermProject\RTS_CRANE_PROJECT\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RTS_CRANE_PROJECT.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RTS_CRANE_PROJECT.elf
+ 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+arm-none-eabi-objdump -h -S RTS_CRANE_PROJECT.elf  > "RTS_CRANE_PROJECT.list"
+   text	   data	    bss	    dec	    hex	filename
+  33468	     96	  21200	  54764	   d5ec	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+Finished building: RTS_CRANE_PROJECT.list
+ 
+11:53:33 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/motor_tasks.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/motor_tasks.d" -MT"Core/Src/motor_tasks.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/motor_tasks.o"
+arm-none-eabi-gcc -o "RTS_CRANE_PROJECT.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\go\Documents\STM32\STM32Workspaces\RTS_TermProject\RTS_CRANE_PROJECT\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RTS_CRANE_PROJECT.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RTS_CRANE_PROJECT.elf
+ 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+arm-none-eabi-objdump -h -S RTS_CRANE_PROJECT.elf  > "RTS_CRANE_PROJECT.list"
+   text	   data	    bss	    dec	    hex	filename
+  33468	     96	  21200	  54764	   d5ec	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+Finished building: RTS_CRANE_PROJECT.list
+ 
+11:59:23 **** Incremental Build of configuration Debug for project RTS_CRANE_PROJECT ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/motor_tasks.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/motor_tasks.d" -MT"Core/Src/motor_tasks.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/motor_tasks.o"
+arm-none-eabi-gcc -o "RTS_CRANE_PROJECT.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\go\Documents\STM32\STM32Workspaces\RTS_TermProject\RTS_CRANE_PROJECT\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RTS_CRANE_PROJECT.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RTS_CRANE_PROJECT.elf
+ 
+arm-none-eabi-size  RTS_CRANE_PROJECT.elf 
+arm-none-eabi-objdump -h -S RTS_CRANE_PROJECT.elf  > "RTS_CRANE_PROJECT.list"
+   text	   data	    bss	    dec	    hex	filename
+  33484	     96	  21200	  54780	   d5fc	RTS_CRANE_PROJECT.elf
+Finished building: default.size.stdout
+ 
+Finished building: RTS_CRANE_PROJECT.list
+ 

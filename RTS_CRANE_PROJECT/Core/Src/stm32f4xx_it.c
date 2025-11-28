@@ -199,6 +199,7 @@ void EXTI15_10_IRQHandler(void)
   HAL_GPIO_EXTI_IRQHandler(rot_btn_Pin);
   HAL_GPIO_EXTI_IRQHandler(mode_btn_Pin);
   HAL_GPIO_EXTI_IRQHandler(vert_btn_Pin);
+  HAL_GPIO_EXTI_IRQHandler(auto_btn_Pin);
   /* USER CODE BEGIN EXTI15_10_IRQn 1 */
 
   /* USER CODE END EXTI15_10_IRQn 1 */

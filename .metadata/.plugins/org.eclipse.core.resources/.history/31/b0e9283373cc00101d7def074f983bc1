@@ -162,12 +162,6 @@ void auto_motor_controller_task(void *argument){
 		// If you need to home or reset, add it here
 
 		/* === 2) Rotate rot motor RIGHT for 1 second === */
-		vert_motor_up();
-		vTaskDelay(pdMS_TO_TICKS(200));
-		rot_motor_stop();
-
-
-		/* === 2) Rotate rot motor RIGHT for 1 second === */
 		rot_motor_left();
 		vTaskDelay(pdMS_TO_TICKS(800));
 		rot_motor_stop();

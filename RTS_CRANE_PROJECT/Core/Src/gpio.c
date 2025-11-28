@@ -56,6 +56,12 @@ void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(us_trig_GPIO_Port, us_trig_Pin, GPIO_PIN_RESET);
 
+  /*Configure GPIO pins : auto_btn_Pin rot_btn_Pin mode_btn_Pin */
+  GPIO_InitStruct.Pin = auto_btn_Pin|rot_btn_Pin|mode_btn_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
   /*Configure GPIO pin : vert_sw_Pin */
   GPIO_InitStruct.Pin = vert_sw_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
@@ -75,12 +81,6 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LED_GREEN_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : auto_btn_Pin */
-  GPIO_InitStruct.Pin = auto_btn_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(auto_btn_GPIO_Port, &GPIO_InitStruct);
-
   /*Configure GPIO pin : us_trig_Pin */
   GPIO_InitStruct.Pin = us_trig_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -93,18 +93,6 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(vert_btn_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : rot_btn_Pin */
-  GPIO_InitStruct.Pin = rot_btn_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(rot_btn_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : mode_btn_Pin */
-  GPIO_InitStruct.Pin = mode_btn_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(mode_btn_GPIO_Port, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 5, 0);

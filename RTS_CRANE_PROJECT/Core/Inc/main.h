@@ -57,6 +57,9 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define auto_btn_Pin GPIO_PIN_13
+#define auto_btn_GPIO_Port GPIOC
+#define auto_btn_EXTI_IRQn EXTI15_10_IRQn
 #define vert_sw_Pin GPIO_PIN_1
 #define vert_sw_GPIO_Port GPIOA
 #define USART_TX_Pin GPIO_PIN_2
@@ -67,8 +70,6 @@ void Error_Handler(void);
 #define rot_sw_GPIO_Port GPIOA
 #define LED_GREEN_Pin GPIO_PIN_5
 #define LED_GREEN_GPIO_Port GPIOA
-#define auto_btn_Pin GPIO_PIN_4
-#define auto_btn_GPIO_Port GPIOC
 #define us_trig_Pin GPIO_PIN_6
 #define us_trig_GPIO_Port GPIOC
 #define PWM_motor1_Pin GPIO_PIN_8
