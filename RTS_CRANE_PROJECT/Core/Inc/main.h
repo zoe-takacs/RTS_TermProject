@@ -92,6 +92,11 @@ void Error_Handler(void);
 #define SWO_Pin GPIO_PIN_3
 #define SWO_GPIO_Port GPIOB
 
+#define LIMIT_SW_Pin        GPIO_PIN_14
+#define LIMIT_SW_GPIO_Port  GPIOB
+#define LIMIT_SW_EXTI_IRQn  EXTI15_10_IRQn
+
+
 /* USER CODE BEGIN Private defines */
 enum {
 	MANUAL,

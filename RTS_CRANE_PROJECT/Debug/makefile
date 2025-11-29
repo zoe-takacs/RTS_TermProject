@@ -64,8 +64,8 @@ all: main-build
 main-build: RTS_CRANE_PROJECT.elf secondary-outputs
 
 # Tool invocations
-RTS_CRANE_PROJECT.elf RTS_CRANE_PROJECT.map: $(OBJS) $(USER_OBJS) C:\Users\go\Documents\STM32\STM32Workspaces\RTS_TermProject\RTS_CRANE_PROJECT\STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "RTS_CRANE_PROJECT.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\go\Documents\STM32\STM32Workspaces\RTS_TermProject\RTS_CRANE_PROJECT\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RTS_CRANE_PROJECT.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+RTS_CRANE_PROJECT.elf RTS_CRANE_PROJECT.map: $(OBJS) $(USER_OBJS) C:\Users\marc\OneDrive\ -\ Dalhousie\ University\4th\ year\Second\ Semester\Real\ Time\ Systems\RTS_TermProject\RTS_CRANE_PROJECT\STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "RTS_CRANE_PROJECT.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\marc\OneDrive - Dalhousie University\4th year\Second Semester\Real Time Systems\RTS_TermProject\RTS_CRANE_PROJECT\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RTS_CRANE_PROJECT.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

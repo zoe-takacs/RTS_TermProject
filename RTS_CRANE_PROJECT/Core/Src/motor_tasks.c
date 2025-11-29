@@ -6,6 +6,8 @@
 
 extern TaskHandle_t vert_motor_controller_handle;
 extern TaskHandle_t  rot_motor_controller_handle;
+extern volatile uint8_t limit_tripped;
+
 
 extern QueueHandle_t usartQueue;
 
@@ -35,35 +37,71 @@ void add_msg_to_queue(int instruction){
 	xQueueSend(usartQueue, &msg, 0);
 }
 
-void rot_motor_right(void){
-	RotServo_SetPulseUs(1400);
-	add_msg_to_queue(RIGHT);
+void rot_motor_right(void)
+{
+    if (limit_tripped)
+    {
+        // Force both axes to neutral if someone accidentally calls this
+        VertServo_SetPulseUs(1500);
+        RotServo_SetPulseUs(1500);
+        return;
+    }
+
+    RotServo_SetPulseUs(1400);
+    add_msg_to_queue(RIGHT);
 }
 
-void rot_motor_left(void){
-	RotServo_SetPulseUs(1600);
-	add_msg_to_queue(LEFT);
+void rot_motor_left(void)
+{
+    if (limit_tripped)
+    {
+        VertServo_SetPulseUs(1500);
+        RotServo_SetPulseUs(1500);
+        return;
+    }
+
+    RotServo_SetPulseUs(1600);
+    add_msg_to_queue(LEFT);
 }
 
-void vert_motor_up(void){
-	VertServo_SetPulseUs(1400);
-	add_msg_to_queue(UP);
+void vert_motor_up(void)
+{
+    if (limit_tripped)
+    {
+        VertServo_SetPulseUs(1500);
+        RotServo_SetPulseUs(1500);
+        return;
+    }
+
+    VertServo_SetPulseUs(1400);
+    add_msg_to_queue(UP);
 }
 
-void vert_motor_down(void){
-	VertServo_SetPulseUs(1600);
-	add_msg_to_queue(DOWN);
+void vert_motor_down(void)
+{
+    if (limit_tripped)
+    {
+        VertServo_SetPulseUs(1500);
+        RotServo_SetPulseUs(1500);
+        return;
+    }
+
+    VertServo_SetPulseUs(1600);
+    add_msg_to_queue(DOWN);
 }
 
-void vert_motor_stop(void){
-	VertServo_SetPulseUs(1500);
-	add_msg_to_queue(STOP);
+void vert_motor_stop(void)
+{
+    VertServo_SetPulseUs(1500);
+    add_msg_to_queue(STOP);
 }
 
-void rot_motor_stop(void){
-	RotServo_SetPulseUs(1500);
-	add_msg_to_queue(STOP);
+void rot_motor_stop(void)
+{
+    RotServo_SetPulseUs(1500);
+    add_msg_to_queue(STOP);
 }
+
 
 void vert_motor_controller_task(void *argument)
 {
@@ -76,6 +114,11 @@ void vert_motor_controller_task(void *argument)
 
     for (;;)
     {
+        if (limit_tripped)
+        {
+            vert_motor_stop();
+            vTaskSuspend(NULL);   // this task never runs again after limit
+        }
     	// === 2) Check if vertical button is still pressed ===
         if (!Read_Vert_Button())
         {
@@ -124,6 +167,12 @@ void rot_motor_controller_task(void *argument)
 
     for (;;)
     {
+        if (limit_tripped)
+        {
+            rot_motor_stop();
+            vTaskSuspend(NULL);
+        }
+
     	// === 2) Check if rotational button is still pressed ===
         if (!Read_Rot_Button())
         {
@@ -158,6 +207,14 @@ void auto_motor_controller_task(void *argument){
 
 	for(;;)
 	{
+
+        if (limit_tripped)
+        {
+            vert_motor_stop();
+            rot_motor_stop();
+            vTaskSuspend(NULL);
+        }
+
 		/* === 1) Assume starting position (nothing to do) === */
 		// If you need to home or reset, add it here
 

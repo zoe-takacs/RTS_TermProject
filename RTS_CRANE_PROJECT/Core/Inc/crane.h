@@ -70,6 +70,8 @@ uint8_t Read_Vert_Switch(void);
 uint8_t Read_Rot_Button(void);
 uint8_t Read_Rot_Switch(void);
 
+extern volatile uint8_t limit_tripped;
+
 // Tasks
 void vert_motor_controller_task(void *argument);
 void rot_motor_controller_task(void *argument);

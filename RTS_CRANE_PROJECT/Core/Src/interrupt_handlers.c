@@ -24,6 +24,8 @@ extern uint32_t echo_falling;
 
 int mode = MANUAL;
 char msg[50];
+volatile uint8_t limit_tripped = 0;
+
 
 void change_mode(void){
 	mode = (mode + 1) % 3;
@@ -79,9 +81,30 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
     BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 
+    // ===== Limit switch on PB14 (LIMIT_SW_Pin) =====
+    if (GPIO_Pin == LIMIT_SW_Pin)
+    {
+        // Latch the fault
+        limit_tripped = 1;
+
+        // Immediately force both servos to neutral / stop position
+        VertServo_SetPulseUs(1500);
+        RotServo_SetPulseUs(1500);
+
+        // Once the limit is hit, ignore all other button presses
+        return;
+    }
+
+    // If the limit has already been tripped, ignore other EXTI sources
+    if (limit_tripped)
+    {
+        return;
+    }
+
+    // ===== Mode / button handling (existing behaviour) =====
     if (GPIO_Pin == mode_btn_Pin)
     {
-         change_mode();
+        change_mode();
     }
     else if (GPIO_Pin == vert_btn_Pin && mode == MANUAL)
     {
@@ -96,7 +119,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     }
     else if (GPIO_Pin == auto_btn_Pin && mode == AUTO)
     {
-    	xHigherPriorityTaskWoken = xTaskResumeFromISR(auto_motor_controller_handle);
-		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+        xHigherPriorityTaskWoken = xTaskResumeFromISR(auto_motor_controller_handle);
+        portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
     }
 }
